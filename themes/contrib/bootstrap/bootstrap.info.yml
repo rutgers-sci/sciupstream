@@ -27,8 +27,6 @@ libraries-extend:
     - bootstrap/drupal.ajax
   core/drupal.autocomplete:
     - bootstrap/drupal.autocomplete
-  core/drupal.dialog.ajax:
-    - bootstrap/drupal.dialog.ajax
   core/drupal.form:
     - bootstrap/drupal.form
   core/drupal.progress:
@@ -73,8 +71,16 @@ libraries-override:
       theme:
         css/node.preview.css: false
 
-# Information added by Drupal.org packaging script on 2018-02-20
-version: '8.x-3.10'
+# The following are dynamic library overrides based on certain critera,
+# usually a theme setting.
+#
+# @see \Drupal\bootstrap\Plugin\Alter\LibraryInfo::alter()
+#
+#  core/drupal.dialog: bootstrap/drupal.dialog
+#  core/drupal.dialog.ajax: bootstrap/drupal.dialog.ajax
+
+# Information added by Drupal.org packaging script on 2018-01-20
+version: '8.x-3.9'
 core: '8.x'
 project: 'bootstrap'
-datestamp: 1519144990
+datestamp: 1516430290

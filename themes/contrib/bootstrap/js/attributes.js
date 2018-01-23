@@ -1,24 +1,21 @@
 (function ($, _) {
 
   /**
-   * @class Attributes
+   * Class to help modify attributes.
    *
-   * Modifies attributes.
-   *
-   * @param {Object|Attributes} attributes
+   * @param {object} object
    *   An object to initialize attributes with.
+   *
+   * @constructor
    */
-  var Attributes = function (attributes) {
-    this.data = {};
-    this.data['class'] = [];
-    this.merge(attributes);
+  var Attributes = function (object) {
+    this.data = object && _.isObject(object) && _.clone(object) || {};
   };
 
   /**
    * Renders the attributes object as a string to inject into an HTML element.
    *
-   * @return {String}
-   *   A rendered string suitable for inclusion in HTML markup.
+   * @returns {string}
    */
   Attributes.prototype.toString = function () {
     var output = '';
@@ -26,37 +23,15 @@
     var checkPlain = function (str) {
       return str && str.toString().replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;') || '';
     };
-    var data = this.getData();
-    for (name in data) {
-      if (!data.hasOwnProperty(name)) continue;
-      value = data[name];
+    for (name in this.data) {
+      if (!this.data.hasOwnProperty(name)) continue;
+      value = this.data[name];
       if (_.isFunction(value)) value = value();
       if (_.isObject(value)) value = _.values(value);
       if (_.isArray(value)) value = value.join(' ');
       output += ' ' + checkPlain(name) + '="' + checkPlain(value) + '"';
     }
     return output;
-  };
-
-  /**
-   * Renders the Attributes object as a plain object.
-   *
-   * @return {Object}
-   *   A plain object suitable for inclusion in DOM elements.
-   */
-  Attributes.prototype.toPlainObject = function () {
-    var object = {};
-    var name, value;
-    var data = this.getData();
-    for (name in data) {
-      if (!data.hasOwnProperty(name)) continue;
-      value = data[name];
-      if (_.isFunction(value)) value = value();
-      if (_.isObject(value)) value = _.values(value);
-      if (_.isArray(value)) value = value.join(' ');
-      object[name] = value;
-    }
-    return object;
   };
 
   /**
@@ -70,8 +45,9 @@
    * @chainable
    */
   Attributes.prototype.addClass = function (value) {
-    var args = Array.prototype.slice.call(arguments);
-    this.data['class'] = this.sanitizeClasses(this.data['class'].concat(args));
+    var classes = this.getClasses();
+    value = [].concat(classes, value);
+    this.set('class', _.uniq(value));
     return this;
   };
 
@@ -107,10 +83,10 @@
   /**
    * Retrieves a cloned copy of the internal attributes data object.
    *
-   * @return {Object}
+   * @returns {Object}
    */
   Attributes.prototype.getData = function () {
-    return _.extend({}, this.data);
+    return _.clone(this.data);
   };
 
   /**
@@ -120,37 +96,32 @@
    *   The classes array.
    */
   Attributes.prototype.getClasses = function () {
-    return this.get('class', []);
+    var classes = [].concat(this.get('class', []));
+    return _.uniq(classes);
   };
 
   /**
    * Indicates whether a class is present in the array.
    *
-   * @param {string|Array} className
+   * @param {string|Array} name
    *   The class(es) to search for.
    *
    * @return {boolean}
    *   TRUE or FALSE
    */
-  Attributes.prototype.hasClass = function (className) {
-    className = this.sanitizeClasses(Array.prototype.slice.call(arguments));
+  Attributes.prototype.hasClass = function (name) {
+    name = [].concat(name);
     var classes = this.getClasses();
-    for (var i = 0, l = className.length; i < l; i++) {
-      // If one of the classes fails, immediately return false.
-      if (_.indexOf(classes, className[i]) === -1) {
-        return false;
-      }
-    }
-    return true;
+    var found = false;
+    _.each(name, function (value) { if (_.indexOf(classes, value) !== -1) found = true; });
+    return found;
   };
 
   /**
    * Merges multiple values into the array.
    *
-   * @param {Attributes|Node|jQuery|Object} object
-   *   An Attributes object with existing data, a Node DOM element, a jQuery
-   *   instance or a plain object where the key is the attribute name and the
-   *   value is the attribute value.
+   * @param {object} values
+   *   An associative key/value array.
    * @param {boolean} [recursive]
    *   Flag determining whether or not to recursively merge key/value pairs.
    *
@@ -158,54 +129,14 @@
    *
    * @chainable
    */
-  Attributes.prototype.merge = function (object, recursive) {
-    // Immediately return if there is nothing to merge.
-    if (!object) {
-      return this;
-    }
-
-    // Get attributes from a jQuery element.
-    if (object instanceof $) {
-      object = object[0];
-    }
-
-    // Get attributes from a DOM element.
-    if (object instanceof Node) {
-      object = Array.prototype.slice.call(object.attributes).reduce(function (attributes, attribute) {
-        attributes[attribute.name] = attribute.value;
-        return attributes;
-      }, {});
-    }
-    // Get attributes from an Attributes instance.
-    else if (object instanceof Attributes) {
-      object = object.getData();
-    }
-    // Otherwise, clone the object.
-    else {
-      object = _.extend({}, object);
-    }
-
-    // By this point, there should be a valid plain object.
-    if (!$.isPlainObject(object)) {
-      setTimeout(function () {
-        throw new Error('Passed object is not supported: ' + object);
-      });
-      return this;
-    }
-
-    // Handle classes separately.
-    if (object && object['class'] !== void 0) {
-      this.addClass(object['class']);
-      delete object['class'];
-    }
-
-    if (recursive === void 0 || recursive) {
-      this.data = $.extend(true, {}, this.data, object);
+  Attributes.prototype.merge = function (values, recursive) {
+    values = values instanceof Attributes ? values.getData() : values;
+    if (recursive === void(0) || recursive) {
+      this.data = $.extend(true, {}, this.data, values);
     }
     else {
-      this.data = $.extend({}, this.data, object);
+      $.extend(this.data, values);
     }
-
     return this;
   };
 
@@ -227,16 +158,15 @@
   /**
    * Removes a class from the attributes array.
    *
-   * @param {...string|Array} className
+   * @param {string|Array} value
    *   An individual class or an array of classes to remove.
    *
    * @return {Attributes}
    *
    * @chainable
    */
-  Attributes.prototype.removeClass = function (className) {
-    var remove = this.sanitizeClasses(Array.prototype.slice.apply(arguments));
-    this.data['class'] = _.without(this.getClasses(), remove);
+  Attributes.prototype.removeClass = function (value) {
+    this.set('class', _.without(this.getClasses(), [].concat(value)));
     return this;
   };
 
@@ -254,47 +184,12 @@
    */
   Attributes.prototype.replaceClass = function (oldValue, newValue) {
     var classes = this.getClasses();
-    var i = _.indexOf(this.sanitizeClasses(oldValue), classes);
+    var i = _.indexOf(oldValue, classes);
     if (i >= 0) {
       classes[i] = newValue;
       this.set('class', classes);
     }
     return this;
-  };
-
-  /**
-   * Ensures classes are flattened into a single is an array and sanitized.
-   *
-   * @param {...String|Array} classes
-   *   The class or classes to sanitize.
-   *
-   * @return {Array}
-   *   A sanitized array of classes.
-   */
-  Attributes.prototype.sanitizeClasses = function (classes) {
-    return _.chain(Array.prototype.slice.call(arguments))
-      // Flatten in case there's a mix of strings and arrays.
-      .flatten()
-
-      // Split classes that may have been added with a space as a separator.
-      .map(function (string) {
-        return string.split(' ');
-      })
-
-      // Flatten again since it was just split into arrays.
-      .flatten()
-
-      // Filter out empty items.
-      .filter()
-
-      // Clean the class to ensure it's a valid class name.
-      .map(Attributes.cleanClass)
-
-      // Ensure classes are unique.
-      .uniq()
-
-      // Retrieve the final value.
-      .value();
   };
 
   /**
@@ -310,69 +205,24 @@
    * @chainable
    */
   Attributes.prototype.set = function (name, value) {
-    var obj = $.isPlainObject(name) ? name : {};
-    if (typeof name === 'string') {
-      obj[name] = value;
-    }
-    return this.merge(obj);
-  };
-
-  /**
-   * Prepares a string for use as a CSS identifier (element, class, or ID name).
-   *
-   * Note: this is essentially a direct copy from
-   * \Drupal\Component\Utility\Html::cleanCssIdentifier
-   *
-   * @param {string} identifier
-   *   The identifier to clean.
-   * @param {Object} [filter]
-   *   An object of string replacements to use on the identifier.
-   *
-   * @return {string}
-   *   The cleaned identifier.
-   */
-  Attributes.cleanClass = function (identifier, filter) {
-    filter = filter || {
-      ' ': '-',
-      '_': '-',
-      '/': '-',
-      '[': '-',
-      ']': ''
-    };
-
-    identifier = identifier.toLowerCase();
-
-    if (filter['__'] === void 0) {
-      identifier = identifier.replace('__', '#DOUBLE_UNDERSCORE#', identifier);
-    }
-
-    identifier = identifier.replace(Object.keys(filter), Object.values(filter), identifier);
-
-    if (filter['__'] === void 0) {
-      identifier = identifier.replace('#DOUBLE_UNDERSCORE#', '__', identifier);
-    }
-
-    identifier = identifier.replace(/[^\u002D\u0030-\u0039\u0041-\u005A\u005F\u0061-\u007A\u00A1-\uFFFF]/u, '', identifier);
-    identifier = identifier.replace(['/^[0-9]/', '/^(-[0-9])|^(--)/'], ['_', '__'], identifier);
-
-    return identifier;
+    this.data[name] = value;
+    return this;
   };
 
   /**
    * Creates an Attributes instance.
    *
-   * @param {object|Attributes} [attributes]
+   * @param {object|Attributes} object
    *   An object to initialize attributes with.
    *
-   * @return {Attributes}
-   *   An Attributes instance.
+   * @returns {Attributes}
+   *
+   * @global
    *
    * @constructor
    */
-  Attributes.create = function (attributes) {
-    return new Attributes(attributes);
+  window.Attributes = function (object) {
+    return object instanceof Attributes ? object : new Attributes(object);
   };
-
-  window.Attributes = Attributes;
 
 })(window.jQuery, window._);

@@ -2,7 +2,7 @@
  * @file
  * Theme hooks for the Drupal Bootstrap base theme.
  */
-(function ($, Drupal, Bootstrap, Attributes) {
+(function ($, Drupal, Bootstrap) {
 
   /**
    * Fallback for theming an icon if the Icon API module is not installed.
@@ -24,7 +24,7 @@
        */
       icon: function (bundle, icon, attributes) {
         if (!Drupal.icon.bundles[bundle]) return '';
-        attributes = Attributes.create(attributes).addClass('icon').set('aria-hidden', 'true');
+        attributes = Attributes(attributes).addClass('icon').set('aria-hidden', 'true');
         icon = Drupal.icon.bundles[bundle](icon, attributes);
         return '<span' + attributes + '></span>';
       }
@@ -54,7 +54,7 @@
      * @returns {string}
      */
     ajaxThrobber: function () {
-      return Drupal.theme('bootstrapIcon', 'refresh', {'class': ['ajax-throbber', 'glyphicon-spin'] });
+      return Drupal.theme.bootstrapIcon('refresh', {'class': ['ajax-throbber', 'glyphicon-spin'] });
     },
 
     /**
@@ -75,19 +75,13 @@
      * @returns {string}
      */
     button: function (attributes) {
-      attributes = Attributes.create(attributes).addClass('btn');
+      attributes = Attributes(attributes).addClass('btn');
       var context = attributes.get('context', 'default');
       var label = attributes.get('value', '');
       attributes.remove('context').remove('value');
       if (!attributes.hasClass(['btn-default', 'btn-primary', 'btn-success', 'btn-info', 'btn-warning', 'btn-danger', 'btn-link'])) {
         attributes.addClass('btn-' + Bootstrap.checkPlain(context));
       }
-
-      // Attempt to, intelligently, provide a default button "type".
-      if (!attributes.exists('type')) {
-        attributes.set('type', attributes.hasClass('form-submit') ? 'submit' : 'button');
-      }
-
       return '<button' + attributes + '>' + label + '</button>';
     },
 
@@ -116,7 +110,7 @@
      * @returns {string}
      */
     'btn-block': function (attributes) {
-      return Drupal.theme('button', Attributes.create(attributes).addClass('btn-block'));
+      return Drupal.theme('button', Attributes(attributes).addClass('btn-block'));
     },
 
     /**
@@ -130,7 +124,7 @@
      * @returns {string}
      */
     'btn-lg': function (attributes) {
-      return Drupal.theme('button', Attributes.create(attributes).addClass('btn-lg'));
+      return Drupal.theme('button', Attributes(attributes).addClass('btn-lg'));
     },
 
     /**
@@ -144,7 +138,7 @@
      * @returns {string}
      */
     'btn-sm': function (attributes) {
-      return Drupal.theme('button', Attributes.create(attributes).addClass('btn-sm'));
+      return Drupal.theme('button', Attributes(attributes).addClass('btn-sm'));
     },
 
     /**
@@ -158,7 +152,7 @@
      * @returns {string}
      */
     'btn-xs': function (attributes) {
-      return Drupal.theme('button', Attributes.create(attributes).addClass('btn-xs'));
+      return Drupal.theme('button', Attributes(attributes).addClass('btn-xs'));
     },
 
     /**
@@ -177,4 +171,4 @@
 
   });
 
-})(window.jQuery, window.Drupal, window.Drupal.bootstrap, window.Attributes);
+})(window.jQuery, window.Drupal, window.Drupal.bootstrap);
