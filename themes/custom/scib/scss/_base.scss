@@ -97,9 +97,12 @@
 }
 
 .navbar-default .navbar-nav > li.active a, .navbar-default .navbar-nav > li.active {
-  background-color: $hover-back !important;
-  color: $white;
+  background-color: $hover-back;
+  color: #eee;
 }
+
+.dropdown-menu {background-color: $hover-back;}
+.dropdown-menu > li > a {color: #fff;}
 
 /*main menu*/
 .main-menu {clear:both; float:left;}
