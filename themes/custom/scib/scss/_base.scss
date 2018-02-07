@@ -52,16 +52,7 @@
   clear: both;
   width: 100%;
   background: $red;
-  .search-block-form {
-    float: right;
-    width:25%;
-    @include media("<tablet") {
-      float: none;
-      width: 100%;
-      padding-left: 20px;
-      .form-group { margin-bottom: 0;}
-    }
-  }
+  .search-block-form {float: right; width:25%;}
 }
 
 /*branding area*/
@@ -70,7 +61,6 @@
   .navbar-brand{
     color: $white;
     font-size: 24px;
-    line-height: 24px;
   }
   .navbar-brand:hover{
     text-decoration: underline;
@@ -81,13 +71,9 @@
   .site-branding__name {
     float: right;
     margin-top: 30px;
-    font-family: "Raleway",Helvetica,Arial,sans-serif;
-    @include media("<tablet") {
+    @media (max-width: $screen-xs-max) {
       float: none;
-      margin: 0;
-      a.navbar-brand {
-        margin-bottom: 30px;
-      }
+      margin: 0
     }
   }
   .logo {padding-bottom: 20px;}
@@ -111,25 +97,8 @@
 }
 
 .navbar-default .navbar-nav > li.active a, .navbar-default .navbar-nav > li.active {
-  background-color: $hover-back;
-  color: #eee;
-}
-
-.dropdown-menu {background-color: $red;}
-.dropdown-menu > li > a {color: #fff;}
-
-.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-  color: #eee;
-}
-
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-  background-color: $hover-back;
-}
-
-.navbar {
-  @include media("<tablet") {
-    margin-bottom: 0;
-  }
+  background-color: $hover-back !important;
+  color: $white;
 }
 
 /*main menu*/
@@ -140,29 +109,10 @@
 
 /*layout*/
 .main-container {max-width: 1600px;}
-.col-sm-12 .region-content .field--name-body,
-.col-sm-12 .region-content .page-header,
-.col-sm-12 .region-content .block-views {
-  margin: 0 117px 20px;
+.region-content .field--name-body, .region-content .page-header {
+  padding: 0 117px;
   @include media("<widescreen") {
-    margin: 0 0 10px;
-  }
-}
-
-.col-sm-9 .region-content .field--name-body,
-.col-sm-9 .region-content .page-header,
-.col-sm-9 .region-content .block-views {
-  margin: 0 20px 20px;
-  @include media("<widescreen") {
-    margin: 0 0 10px;
-  }
-}
-
-/*breadcrumb*/
-.breadcrumb {
-  padding: 0 15px;
-  @include media("<tablet") {
-    display: none;
+    padding: 0;
   }
 }
 
