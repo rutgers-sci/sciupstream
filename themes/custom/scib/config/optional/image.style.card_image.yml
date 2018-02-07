@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: card_image
+label: 'Card Image'
+effects:
+  0d2c22f3-2b43-4385-aefb-f953b17a1582:
+    uuid: 0d2c22f3-2b43-4385-aefb-f953b17a1582
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: 300
+      upscale: false

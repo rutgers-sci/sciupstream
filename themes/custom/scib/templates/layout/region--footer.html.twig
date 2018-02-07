@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{%
+  set classes = [
+    'region',
+    'region-' ~ region|clean_class,
+  ]
+%}
+
+<div class="footcontainer">
+    <div class="footright">
+    <h3>Connect with SC&I</h3>
+        <div class="social">
+            <a href="http://twitter.com/RutgersCommInfo" class="icon-twitter"><span class="hidden">twitter</span></a>
+            <a href="http://www.facebook.com/RutgersCommInfo" class="icon-facebook"><span class="hidden">facebook</span></a>
+            <a href="http://www.instagram.com/rutgerscomminfo" class="icon-instagram"><span class="hidden">instagram</span></a>
+            <a href="https://www.linkedin.com/company/rutgers-university-school-of-communication-and-information" class="icon-linkedin2"><span class="hidden">linkedin</span></a>
+            <a href="http://www.youtube.com/RutgersCommInfo" class="icon-youtube"><span class="hidden">youtube</span></a>
+            <a href="http://plus.google.com/+RutgersComminfo" class="icon-google-plus"><span class="hidden">google</span></a>
+        </div>
+        <div>@RutgersComminfo</div>
+        <div>#RutgersCommInfo #RUSCI</div>
+</div>
+{% if content %}
+  <div{{ attributes.addClass(classes) }}>
+      <div>Rutgers University School of Communication and Information</div>
+      <div>4 Huntington Street<br />
+          New Brunswick, NJ 08901</div>
+      <div>848.932.7500</div>
+      <div>sci-info@comminfo.rutgers.edu</div>
+    {{ content }}
+  </div>
+
+{% endif %}
+    <div id="copyright">Copyright {{ "now"|date("Y") }} Rutgers, The State University of New Jersey. An equal opportunity, affirmative action institution.
+    </div>
+</div>

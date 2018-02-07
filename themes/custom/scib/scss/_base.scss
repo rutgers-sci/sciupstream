@@ -1,0 +1,130 @@
+@media screen and (min-width: 768px) {
+
+  body {
+     margin-top: 0;
+  }
+}
+
+.navbar-default {
+  background-color: $red;
+  padding-top: 20px;
+}
+
+.navbar {
+  border: none;
+  border-radius: 0;}
+
+.navbar-header {
+  float: none;
+}
+/*topper area*/
+.region-topper {
+  background-color: #030303;
+  height: 35px;
+  .search-area{
+    float: right;
+    width: 30px;
+    .btn {border-radius: 0;}
+  }
+
+  .topper-menu {
+
+    float:left;
+    .nav > li {
+      float: left;
+    }
+    .nav > li > a {
+      padding: 8px 15px;
+      color: #fff;
+      font-size: 12px;
+    }
+    .nav > li > a:hover
+    {
+      color: $hover;
+      text-decoration: underline;
+      background-color: #030303;
+    }
+  }
+}
+
+/*searchtop region - default is not to show - unless click on upper right search icon*/
+.region-searchtop {
+  clear: both;
+  width: 100%;
+  background: $red;
+  .search-block-form {float: right; width:25%;}
+}
+
+/*branding area*/
+.region-navigation {
+  clear: both;
+  .navbar-brand{
+    color: $white;
+    font-size: 24px;
+  }
+  .navbar-brand:hover{
+    text-decoration: underline;
+    background-color: $hover-back;
+    color: #fff;
+  }
+
+  .site-branding__name {
+    float: right;
+    margin-top: 30px;
+    @media (max-width: $screen-xs-max) {
+      float: none;
+      margin: 0
+    }
+  }
+  .logo {padding-bottom: 20px;}
+}
+
+.region-navigation .main-menu {
+  @media (max-width: $screen-xs-max) { display: none; }
+}
+
+.region-navigation-collapsible .main-menu {
+  @media (min-width: $screen-sm-min) { display: none; }
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: $hover-back;
+  text-decoration: underline;
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li.active a, .navbar-default .navbar-nav > li.active {
+  background-color: $hover-back !important;
+  color: $white;
+}
+
+/*main menu*/
+.main-menu {clear:both; float:left;}
+
+/*home*/
+.path-frontpage h1 {display: none;}
+
+/*layout*/
+.main-container {max-width: 1600px;}
+.region-content .field--name-body, .region-content .page-header {
+  padding: 0 117px;
+  @include media("<widescreen") {
+    padding: 0;
+  }
+}
+
+/*footer*/
+.footer {background-color: $darkgray; color: #fff;}
+.footright {float: right; width: 350px;}
+.footcontainer {padding-bottom: 2px;}
+
+#copyright {font-size: 12px;}
+
+@media only screen and (max-width: 700px)  {
+  .footright {float: none; width: 100%; padding-bottom: 10px;}
+}
+
+

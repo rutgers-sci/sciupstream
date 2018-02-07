@@ -1,0 +1,69 @@
+//*CARDS - new*/
+.cardrow {
+  padding: 0 100px;
+  @include media("<widescreen")  { padding: 0;}
+  .card-container:nth-child(2) {
+    border-right: 1px solid #eee;
+    border-left: 1px solid #eee;
+  }
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  /* On mouse-over, add a deeper shadow */
+  img:hover {
+    opacity: 0.8;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);}
+  h3 {margin-bottom: 0;}
+  h3 a {color: #333; font-family: "Raleway",Helvetica,Arial,sans-serif;}
+  h4 {font-size: 0.95rem;
+    text-transform: uppercase;
+    font-family: "lato",Helvetica,Arial,sans-serif;
+    color: #03315c;
+    letter-spacing: 2px;}
+}
+
+/*text widget, text module*/
+.paragraph--type--text-widget, .paragraph--type--text-module{
+  padding: 0 117px;
+  @include media("<widescreen") {
+    padding: 0;
+  }
+}
+
+/*text image right*/
+.paragraph--type--text-image-right {
+  .field--name-field-image-right{
+    float:right;
+  }
+  .field--name-field-image-right img {
+    margin-left: 20px;
+    max-width: 350px;
+  }
+}
+
+/*stories*/
+.field--name-field-story-row {
+  margin-top: 15px;
+  text-align: center;
+  .row {
+    clear: left;
+    display: inline-block;
+  }
+  .col {
+    width: 300px;
+    margin-right: 5px;
+    height: 122px;
+    float: left;
+  }
+  .story-title {font-size: 14px; text-transform:uppercase; margin-bottom: 10px; margin-top: 5px; text-align: left;}
+  .story-title a {color: #333;}
+  .story-title a:hover {color: $red;}
+  .field--name-field-story-subtitle {text-align: left; font-size: 12px;}
+  .storyimage-area {float: left; width: 110px; text-align: left;}
+  .paragraph--type--story-box {border: 1px solid #eee;  font-size: 14px;height: 122px; }
+}
+
+
+
