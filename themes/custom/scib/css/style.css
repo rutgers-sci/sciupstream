@@ -6465,10 +6465,10 @@ p:last-child,
   max-width: 1600px; }
 
 .region-content .field--name-body, .region-content .page-header {
-  padding: 0 117px; }
+  margin: 0 117px 20px; }
   @media (max-width: 1249px) {
     .region-content .field--name-body, .region-content .page-header {
-      padding: 0; } }
+      margin: 0 0 10px; } }
 
 /*footer*/
 .footer {
