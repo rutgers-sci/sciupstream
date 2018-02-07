@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.topper
+  module:
+    - system
+  theme:
+    - scib
+id: topper
+theme: scib
+region: topper
+weight: 0
+provider: null
+plugin: 'system_menu_block:topper'
+settings:
+  id: 'system_menu_block:topper'
+  label: Topper
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 0
+visibility: {  }
