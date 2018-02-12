@@ -33,7 +33,7 @@
 }
 
 .col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module{
-  padding: 0px;
+  padding: 0 20px 20px;
   @include media("<widescreen") {
     padding: 0;
   }
