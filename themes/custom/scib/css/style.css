@@ -6597,7 +6597,7 @@ p:last-child,
       padding: 0; } }
 
 .col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
-  padding: 0 117px; }
+  padding: 0px; }
   @media (max-width: 1249px) {
     .col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
       padding: 0; } }
