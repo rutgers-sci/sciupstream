@@ -1,0 +1,129 @@
+/* aside menu*/
+.side-nav{
+  margin: 0px 0 30px;
+  font-family: $font-family-sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  @include media("<tablet") {
+    font-size: 18px;
+    margin: 0 -15px;
+  }
+
+  ul{
+    padding: 0 !important;
+    max-width: none;
+
+    li{
+      padding: 0 !important;
+      border-bottom: 1px solid #e8e8e8;
+
+      &:before {
+        display: none;
+      }
+
+      >a:hover,
+      >a.is-active {
+        background: $blue;
+        color: $white;
+      }
+
+      >a.is-active {
+        font-weight: bold;
+      }
+    }
+
+    a{
+      display: block;
+      padding: 18px 13% 18px 8%;
+      color: $black;
+      position: relative;
+      @include media("<tablet") {
+        padding: 17px 15px;
+        text-align: center;
+      }
+
+      &:after {
+        position: absolute;
+        top: 50%;
+        right: 8%;
+        font-size: 6px;
+        line-height: 20px;
+        margin-top: -10px;
+        @include media("<tablet") {
+          display: none;
+        }
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+    }
+
+    ul{
+      border-top: 1px solid #e8e8e8;
+      text-transform: none;
+      margin: 0;
+      font-weight: 500;
+      font-size: 14px;
+      max-width: none;
+      list-style-type: none;
+
+      >li{
+        border: none;
+        padding: 0;
+
+        &.active {
+          >a{
+            font-weight: 500;
+            color: $blue;
+            background: #dadee2;
+          }
+        }
+
+        &:first-child {
+          >a{
+            padding-top: 16px;
+          }
+        }
+
+        &:last-child {
+          >a{
+            padding-bottom: 18px;
+          }
+        }
+
+        >a{
+          color: $blue;
+          padding: 7px 10px 6px 19%;
+          @include media("<desktop") {
+            padding-left: 11%;
+          }
+          @include media("<tablet") {
+            padding: 10px 15px;
+          }
+
+          &:after {
+            display: none;
+          }
+
+          &:hover {
+            color: $blue;
+            background: #dadee2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.col-sm-4{
+  +.col-sm-8{
+    #content{
+      margin-top: -15px;
+      @include media("<tablet") {
+        margin: 0;
+      }
+    }
+  }
+}
