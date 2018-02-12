@@ -25,7 +25,14 @@
 }
 
 /*text widget, text module*/
-.paragraph--type--text-widget, .paragraph--type--text-module{
+.col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module{
+  padding: 0 117px;
+  @include media("<widescreen") {
+    padding: 0;
+  }
+}
+
+.col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module{
   padding: 0 117px;
   @include media("<widescreen") {
     padding: 0;

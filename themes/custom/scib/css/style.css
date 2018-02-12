@@ -6476,10 +6476,16 @@ p:last-child,
 .main-container {
   max-width: 1600px; }
 
-.region-content .field--name-body, .region-content .page-header {
+.col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header {
   margin: 0 117px 20px; }
   @media (max-width: 1249px) {
-    .region-content .field--name-body, .region-content .page-header {
+    .col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header {
+      margin: 0 0 10px; } }
+
+.col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header {
+  margin: 0 20px 20px; }
+  @media (max-width: 1249px) {
+    .col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header {
       margin: 0 0 10px; } }
 
 /*footer*/
@@ -6584,10 +6590,16 @@ p:last-child,
     letter-spacing: 2px; }
 
 /*text widget, text module*/
-.paragraph--type--text-widget, .paragraph--type--text-module {
+.col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module {
   padding: 0 117px; }
   @media (max-width: 1249px) {
-    .paragraph--type--text-widget, .paragraph--type--text-module {
+    .col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module {
+      padding: 0; } }
+
+.col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
+  padding: 0 117px; }
+  @media (max-width: 1249px) {
+    .col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
       padding: 0; } }
 
 /*text image right*/
@@ -6906,5 +6918,89 @@ h1, h2, h3 {
     left: 0px;
     font-size: 1em;
     padding-bottom: 5px; } }
+/* aside menu*/
+.side-nav {
+  margin: 0px 0 30px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase; }
+  @media (max-width: 767px) {
+    .side-nav {
+      font-size: 18px;
+      margin: 0 -15px; } }
+  .side-nav ul {
+    padding: 0 !important;
+    max-width: none; }
+    .side-nav ul li {
+      padding: 0 !important;
+      border-bottom: 1px solid #e8e8e8; }
+      .side-nav ul li:before {
+        display: none; }
+      .side-nav ul li > a:hover,
+      .side-nav ul li > a.is-active {
+        background: #485b6e;
+        color: #fff; }
+      .side-nav ul li > a.is-active {
+        font-weight: bold; }
+    .side-nav ul a {
+      display: block;
+      padding: 18px 13% 18px 8%;
+      color: #000;
+      position: relative; }
+      @media (max-width: 767px) {
+        .side-nav ul a {
+          padding: 17px 15px;
+          text-align: center; } }
+      .side-nav ul a:after {
+        position: absolute;
+        top: 50%;
+        right: 8%;
+        font-size: 6px;
+        line-height: 20px;
+        margin-top: -10px; }
+        @media (max-width: 767px) {
+          .side-nav ul a:after {
+            display: none; } }
+      .side-nav ul a:hover {
+        text-decoration: none; }
+    .side-nav ul ul {
+      border-top: 1px solid #e8e8e8;
+      text-transform: none;
+      margin: 0;
+      font-weight: 500;
+      font-size: 14px;
+      max-width: none;
+      list-style-type: none; }
+      .side-nav ul ul > li {
+        border: none;
+        padding: 0; }
+        .side-nav ul ul > li.active > a {
+          font-weight: 500;
+          color: #485b6e;
+          background: #dadee2; }
+        .side-nav ul ul > li:first-child > a {
+          padding-top: 16px; }
+        .side-nav ul ul > li:last-child > a {
+          padding-bottom: 18px; }
+        .side-nav ul ul > li > a {
+          color: #485b6e;
+          padding: 7px 10px 6px 19%; }
+          @media (max-width: 1023px) {
+            .side-nav ul ul > li > a {
+              padding-left: 11%; } }
+          @media (max-width: 767px) {
+            .side-nav ul ul > li > a {
+              padding: 10px 15px; } }
+          .side-nav ul ul > li > a:after {
+            display: none; }
+          .side-nav ul ul > li > a:hover {
+            color: #485b6e;
+            background: #dadee2; }
+
+.col-sm-4 + .col-sm-8 #content {
+  margin-top: -15px; }
+  @media (max-width: 767px) {
+    .col-sm-4 + .col-sm-8 #content {
+      margin: 0; } }
 
 /*# sourceMappingURL=style.css.map */
