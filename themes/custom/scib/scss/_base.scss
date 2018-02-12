@@ -71,6 +71,7 @@
   .site-branding__name {
     float: right;
     margin-top: 30px;
+    font-family: "Raleway",Helvetica,Arial,sans-serif;
     @media (max-width: $screen-xs-max) {
       float: none;
       margin: 0
@@ -103,6 +104,10 @@
 
 .dropdown-menu {background-color: $hover-back;}
 .dropdown-menu > li > a {color: #fff;}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #eee;
+}
 
 /*main menu*/
 .main-menu {clear:both; float:left;}
