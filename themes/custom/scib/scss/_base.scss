@@ -61,6 +61,7 @@
   .navbar-brand{
     color: $white;
     font-size: 24px;
+    line-height: 24px;
   }
   .navbar-brand:hover{
     text-decoration: underline;
@@ -74,7 +75,8 @@
     font-family: "Raleway",Helvetica,Arial,sans-serif;
     @media (max-width: $screen-xs-max) {
       float: none;
-      margin: 0
+      margin: 0;
+      padding-bottom: 10px;
     }
   }
   .logo {padding-bottom: 20px;}
