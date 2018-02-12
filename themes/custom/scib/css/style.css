@@ -6416,7 +6416,8 @@ p:last-child,
   clear: both; }
   .region-navigation .navbar-brand {
     color: #fff;
-    font-size: 24px; }
+    font-size: 24px;
+    line-height: 24px; }
   .region-navigation .navbar-brand:hover {
     text-decoration: underline;
     background-color: #D2204D;
@@ -6428,7 +6429,8 @@ p:last-child,
     @media (max-width: 767px) {
       .region-navigation .site-branding__name {
         float: none;
-        margin: 0; } }
+        margin: 0;
+        padding-bottom: 10px; } }
   .region-navigation .logo {
     padding-bottom: 20px; }
 
