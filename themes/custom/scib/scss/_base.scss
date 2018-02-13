@@ -111,6 +111,10 @@
   color: #eee;
 }
 
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: $hover-back;
+}
+
 /*main menu*/
 .main-menu {clear:both; float:left;}
 
