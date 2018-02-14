@@ -6592,6 +6592,12 @@ p:last-child,
     color: #03315c;
     letter-spacing: 2px; }
 
+.col-sm-12 .region-content .content .paragraph--type--card-row {
+  margin: 0 0 20px; }
+  @media (max-width: 1249px) {
+    .col-sm-12 .region-content .content .paragraph--type--card-row {
+      margin: 0 0 10px; } }
+
 /*text image right*/
 .paragraph--type--text-image-right .field--name-field-image-right {
   float: right; }
