@@ -1,1 +1,8 @@
 h1, h2, h3 {font-family: "Raleway",Helvetica,Arial,sans-serif;}
+
+.img-wrapper {
+  float: left; padding: 20px;
+  @include media("<tablet") {
+    max-width: 150px;
+  }
+}
