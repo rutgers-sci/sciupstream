@@ -24,6 +24,13 @@
     letter-spacing: 2px;}
 }
 
+.col-sm-12 .region-content .content .paragraph--type--card-row {
+  margin: 0 0 20px;
+  @include media("<widescreen") {
+    margin: 0 0 10px;
+  }
+}
+
 /*text image right*/
 .paragraph--type--text-image-right {
   .field--name-field-image-right{
