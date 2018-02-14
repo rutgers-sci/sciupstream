@@ -6839,10 +6839,19 @@ h1, h2, h3 {
 
 .img-wrapper {
   float: left;
-  padding: 20px; }
+  padding: 0 40px 20px 0; }
   @media (max-width: 767px) {
     .img-wrapper {
-      max-width: 150px; } }
+      max-width: 150px;
+      padding: 0 10px 10px 0; } }
+
+.person .field--name-field-image {
+  float: left;
+  padding: 0 20px; }
+
+.page .field--name-field-image {
+  float: right;
+  padding: 0 20px; }
 
 /*BANNER - set up with features/banner_bundle_banner_block module
 ===========================*/
