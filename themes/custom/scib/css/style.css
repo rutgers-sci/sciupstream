@@ -6479,16 +6479,16 @@ p:last-child,
 .main-container {
   max-width: 1600px; }
 
-.col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header {
+.col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header, .col-sm-12 .region-content .view-content {
   margin: 0 117px 20px; }
   @media (max-width: 1249px) {
-    .col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header {
+    .col-sm-12 .region-content .field--name-body, .col-sm-12 .region-content .page-header, .col-sm-12 .region-content .view-content {
       margin: 0 0 10px; } }
 
-.col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header {
+.col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header, .col-sm-9 .region-content .view-content {
   margin: 0 20px 20px; }
   @media (max-width: 1249px) {
-    .col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header {
+    .col-sm-9 .region-content .field--name-body, .col-sm-9 .region-content .page-header, .col-sm-9 .region-content .view-content {
       margin: 0 0 10px; } }
 
 /*footer*/
@@ -6836,6 +6836,13 @@ p:last-child,
 
 h1, h2, h3 {
   font-family: "Raleway",Helvetica,Arial,sans-serif; }
+
+.img-wrapper {
+  float: left;
+  padding: 20px; }
+  @media (max-width: 767px) {
+    .img-wrapper {
+      max-width: 150px; } }
 
 /*BANNER - set up with features/banner_bundle_banner_block module
 ===========================*/
