@@ -123,14 +123,18 @@
 
 /*layout*/
 .main-container {max-width: 1600px;}
-.col-sm-12 .region-content .content {
+.col-sm-12 .region-content .field--name-body,
+.col-sm-12 .region-content .page-header,
+.col-sm-12 .region-content .view-content {
   margin: 0 117px 20px;
   @include media("<widescreen") {
     margin: 0 0 10px;
   }
 }
 
-.col-sm-9 .region-content .content {
+.col-sm-9 .region-content .field--name-body,
+.col-sm-9 .region-content .page-header,
+.col-sm-9 .region-content .view-content {
   margin: 0 20px 20px;
   @include media("<widescreen") {
     margin: 0 0 10px;

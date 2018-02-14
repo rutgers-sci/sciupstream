@@ -6479,16 +6479,24 @@ p:last-child,
 .main-container {
   max-width: 1600px; }
 
-.col-sm-12 .region-content .content {
+.col-sm-12 .region-content .field--name-body,
+.col-sm-12 .region-content .page-header,
+.col-sm-12 .region-content .view-content {
   margin: 0 117px 20px; }
   @media (max-width: 1249px) {
-    .col-sm-12 .region-content .content {
+    .col-sm-12 .region-content .field--name-body,
+    .col-sm-12 .region-content .page-header,
+    .col-sm-12 .region-content .view-content {
       margin: 0 0 10px; } }
 
-.col-sm-9 .region-content .content {
+.col-sm-9 .region-content .field--name-body,
+.col-sm-9 .region-content .page-header,
+.col-sm-9 .region-content .view-content {
   margin: 0 20px 20px; }
   @media (max-width: 1249px) {
-    .col-sm-9 .region-content .content {
+    .col-sm-9 .region-content .field--name-body,
+    .col-sm-9 .region-content .page-header,
+    .col-sm-9 .region-content .view-content {
       margin: 0 0 10px; } }
 
 /*footer*/
@@ -6592,11 +6600,18 @@ p:last-child,
     color: #03315c;
     letter-spacing: 2px; }
 
-.col-sm-12 .region-content .content .paragraph--type--card-row {
-  margin: 0 0 20px; }
+/*text widget, text module*/
+.col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module {
+  padding: 0 117px; }
   @media (max-width: 1249px) {
-    .col-sm-12 .region-content .content .paragraph--type--card-row {
-      margin: 0 0 10px; } }
+    .col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module {
+      padding: 0; } }
+
+.col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
+  padding: 0 20px 20px; }
+  @media (max-width: 1249px) {
+    .col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module {
+      padding: 0; } }
 
 /*text image right*/
 .paragraph--type--text-image-right .field--name-field-image-right {
@@ -6832,16 +6847,18 @@ h1, h2, h3 {
 
 .img-wrapper {
   float: left;
-  padding: 0 40px 20px 0;
-  clear: left; }
+  padding: 0 40px 20px 0; }
   @media (max-width: 767px) {
     .img-wrapper {
       max-width: 150px;
       padding: 0 10px 10px 0; } }
 
+.views-row {
+  clear: left; }
+
 .person .field--name-field-image {
   float: left;
-  padding: 0 20px; }
+  padding: 0 120px; }
 
 .page .field--name-field-image {
   float: right;
