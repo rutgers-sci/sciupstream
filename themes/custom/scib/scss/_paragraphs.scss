@@ -24,21 +24,6 @@
     letter-spacing: 2px;}
 }
 
-/*text widget, text module*/
-.col-sm-12 .paragraph--type--text-widget, .col-sm-12 .paragraph--type--text-module{
-  padding: 0 117px;
-  @include media("<widescreen") {
-    padding: 0;
-  }
-}
-
-.col-sm-9 .paragraph--type--text-widget, .col-sm-9 .paragraph--type--text-module{
-  padding: 0 20px 20px;
-  @include media("<widescreen") {
-    padding: 0;
-  }
-}
-
 /*text image right*/
 .paragraph--type--text-image-right {
   .field--name-field-image-right{
